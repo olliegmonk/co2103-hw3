@@ -26,4 +26,5 @@
       "example": 2
     }
   }
+  "required": [ "id" ]
 }
