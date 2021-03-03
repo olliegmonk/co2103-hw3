@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Convenor",
+  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Convenor.json",
   "$id": "http://localhost:8080/",
   "title": "Convenor",
   "description": "A convenor of a module",
