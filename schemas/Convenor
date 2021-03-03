@@ -28,4 +28,5 @@
         "$ref": "https://github.com/olliegmonk/co2103-hw3/schemas/Module"
     }
   }
+  "required": [ "id" ]
 }
