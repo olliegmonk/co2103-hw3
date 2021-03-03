@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Session",
+  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Session.json",
   "$id": "http://localhost:8080/",
   "title": "Session",
   "description": "A session of a module",
