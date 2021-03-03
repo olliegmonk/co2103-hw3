@@ -1,6 +1,6 @@
 {
   "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Module",
-  "$id": "http://localhost:8080",
+  "$id": "http://localhost:8080/",
   "title": "Module",
   "description": "A module taught by a convenor",
   "type": "object",
