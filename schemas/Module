@@ -1,0 +1,35 @@
+{
+  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Module",
+  "$id": "http://localhost:8080",
+  "title": "Module",
+  "description": "A module taught by a convenor",
+  "type": "object",
+  "properties": {
+    "code": {
+      "description": "A module's unique identifier",
+      "type": "string",
+      "example": "CO2103"
+    }
+    "title": {
+      "description": "A module's name",
+      "type": "string",
+      "example": "Software Architecture"
+    }
+    "level": {
+      "description": "A module's level"
+      "type": "integer",
+      "example": 2
+    }
+    "optional" {
+      "description": "Whether or not a module is optional",
+      "type": "boolean",
+      "example": true
+    }
+    "sessions": {
+      "description": "A module's sessions"
+      "type": "array"
+      "items": {
+        "$ref": "https://github.com/olliegmonk/co2103-hw3/schemas/Session"
+    }
+  }
+}
