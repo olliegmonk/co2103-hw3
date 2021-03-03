@@ -32,4 +32,5 @@
         "$ref": "https://github.com/olliegmonk/co2103-hw3/schemas/Session"
     }
   }
+  "required": [ "code" ]
 }
