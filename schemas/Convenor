@@ -1,0 +1,31 @@
+{
+  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Convenor",
+  "$id": "http://localhost:8080",
+  "title": "Convenor",
+  "description": "A convenor of a module",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "A convenor's unique identifier",
+      "type": "integer",
+      "format": "int64",
+      "example": "3"
+    }
+    "name": {
+      "description": "A convenor's name",
+      "type": "string",
+      "example": "Jan Ringert"
+    }
+    "position": {
+      "description": "A convenor's position. Can be \"GTA\", \"LECTURER\", \"PROFESSOR\""
+      "type": "string",
+      "example": "PROFESSOR"
+    }
+    "modules": {
+      "description": "A convenor's modules"
+      "type": "array"
+      "items": {
+        "$ref": "https://github.com/olliegmonk/co2103-hw3/schemas/Module"
+    }
+  }
+}
