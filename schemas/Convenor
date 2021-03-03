@@ -9,7 +9,7 @@
       "description": "A convenor's unique identifier",
       "type": "integer",
       "format": "int64",
-      "example": "3"
+      "example": 3
     }
     "name": {
       "description": "A convenor's name",
