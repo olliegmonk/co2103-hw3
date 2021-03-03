@@ -1,0 +1,14 @@
+{
+  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Message.json",
+  "$id": "http://localhost:8080/",
+  "title": "Message",
+  "description": "An error message",
+  "type": "object",
+  "properties": {
+    "message": {
+      "description": "An error's text message",
+      "type": "string",
+      "example": "Convenor with id 10 not found"
+    }
+  }
+}
