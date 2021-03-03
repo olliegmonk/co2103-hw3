@@ -1,0 +1,29 @@
+{
+  "$schema": "https://github.com/olliegmonk/co2103-hw3/schemas/Session",
+  "$id": "http://localhost:8080/",
+  "title": "Session",
+  "description": "A session of a module",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "A session's unique identifier",
+      "type": "int",
+      "example": 1
+    }
+    "topic": {
+      "description": "A session's topic",
+      "type": "string",
+      "example": "REST APIs"
+    }
+    "datetime": {
+      "description": "A session's time and date"
+      "type": "string",
+      "example": "2021-02-24T12:00:00.000+00:00"
+    }
+    "duration" {
+      "description": "A session's duration in hours",
+      "type": "int",
+      "example": 2
+    }
+  }
+}
