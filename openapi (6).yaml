@@ -1,0 +1,651 @@
+openapi: 3.0.1
+info:
+  title: OGM4 CO2103 HW3
+  description: 'A submission for CO2103 Software Architecture, HW2'
+  contact:
+    name: Oliver Monk
+    email: ogm4@student.le.ac.uk
+  version: 1.0.0
+tags:
+- name: convenors
+- name: modules
+- name: sessions
+paths:
+  /convenors:
+    get:
+      tags:
+        - convenors
+      summary: Get all convenors
+      operationId: listConvenors
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Convenor'
+        404:
+          description: No convenors exist
+    post:
+      tags:
+      - convenors
+      summary: Add a new convenor
+      operationId: createConvenor
+      requestBody:
+        description: Convenor object to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Convenor'
+        required: true
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        409:
+          description: Convenor already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /convenors/{id}:
+    get:
+      tags:
+        - convenors
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+          description: The ID of the convenor to be retrieved
+      summary: Get a single convenor
+      operationId: getConvenor
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        404:
+          description: Convenor of ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    put:
+      tags:
+        - convenors
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+          description: The ID of the convenor to be updated
+      requestBody:
+        description: Convenor object to update with
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Convenor'
+      summary: Update a convenor
+      operationId: updateConvenor
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        404:
+          description: Convenor of ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags: 
+        - convenors
+      parameters:
+          - in: path
+            required: true
+            name: id
+            schema:
+              type: string
+            description: The ID of the convenor to be deleted
+      summary: Delete a convenor
+      operationId: deleteConvenor
+      responses:
+        200:
+          description: OK response
+        404:
+          description: Convenor of ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /convenors/{id}/modules:
+    get:
+      tags:
+        - convenors
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: integer
+          description: The ID of the convenor who's modules are to be listed
+      summary: List a convenor's modules
+      operationId: listConModules
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+        404:
+          description: Convenor of ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /modules:
+    get:
+      tags:
+        - modules
+      summary: List all modules
+      operationId: listModules
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+        404:
+          description: No modules f exist
+    post:
+      tags:
+        - modules
+      requestBody:
+        description: Module object to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      summary: Add a new module
+      operationId: createModule
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        409:
+          description: Module already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /modules/{code}:
+    get:
+      tags:
+        - modules
+      parameters:
+          - in: path
+            required: true
+            name: code
+            schema:
+              type: string
+            description: The code of the module to be retrived
+      summary: Get a single module
+      operationId: getModule
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        404:
+          description: Module of code not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    patch:
+      tags:
+        - modules
+      parameters:
+          - in: path
+            required: true
+            name: code
+            schema:
+              type: string
+            description: The code of the module to be updated
+      requestBody:
+        description: Module object to update with
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      summary: Update a module
+      operationId: updateModule
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        404:
+          description: Module of code not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags: 
+        - modules
+      parameters:
+          - in: path
+            required: true
+            name: code
+            schema:
+              type: string
+            description: The code of the module to be deleted
+      summary: Delete a module
+      operationId: deleteModule
+      responses:
+        200:
+          description: OK response
+        404:
+          description: Module with code not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /modules/{code}/sessions:
+    get:
+      tags:
+        - modules
+      parameters:
+        - in: path
+          required: true
+          name: code
+          schema:
+            type: string
+          description: The code of the module who's sessions are to be listed
+      summary: List a modules's sessions
+      operationId: listModSessions
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+        404:
+          description: Module of code not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    post:
+      tags:
+        - sessions
+      parameters:
+        - in: path
+          required: true
+          name: code
+          schema:
+            type: string
+          description: The code of the module of which the new session will be created in
+      requestBody:
+        description: Session object to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+      summary: Add a new session to a module
+      operationId: createSession
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        409:
+          description: Session already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /modules/{code}/sessions/{id}:                
+    get:
+      tags:
+        - sessions
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: integer
+          description: ID of the session to retrive
+        - in: path
+          required: true
+          name: code
+          schema:
+            type: string
+          description: The code of the module of which the session belongs to
+      summary: Retrives a single session
+      operationId: getSession
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Session of ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    put:
+      tags: 
+        - sessions
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: integer
+          description: ID of the session to update
+        - in: path
+          required: true
+          name: code
+          schema:
+            type: string
+          description: The code of the module of which the session belongs to
+      requestBody:
+        description: Session object to update with
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+      summary: Update a session
+      operationId: putSession
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Session of ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    patch:
+      tags: 
+        - sessions
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: integer
+          description: ID of the session to update
+        - in: path
+          required: true
+          name: code
+          schema:
+            type: string
+          description: The code of the module of which the session belongs to
+      requestBody:
+        description: Session object to update with
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+      summary: Update a session
+      operationId: patchSession
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Session of ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      tags: 
+        - sessions
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: integer
+          description: ID of the session to delete
+        - in: path
+          required: true
+          name: code
+          schema:
+            type: string
+          description: The code of the module of which the session belongs to
+      summary: Delete a session
+      operationId: deleteSession
+      responses:
+        200:
+          description: OK response
+        404:
+          description: Session with ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /sessions:
+    delete:
+      tags:
+        - sessions
+      summary: Delete all sessions
+      operationId: deleteSessions
+      responses:
+        200:
+          description: OK response
+        404:
+          description: No sessions found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    get:
+      tags:
+        - sessions
+      parameters:
+        - in: query
+          required: false
+          name: id
+          schema:
+            type: integer
+          description: ID of searched convenor
+        - in: query
+          required: false
+          name: code
+          schema:
+            type: string
+          description: Code of searched module
+      summary: Search for specific sessions by convenor ID and/or module code
+      operationId: searchSessions
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+        404:
+          description: No convenor/module of ID/code found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+      
+      
+      
+components:
+  schemas:
+    Message:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Error/success message"
+    Session:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+          minimum: 0
+        topic:
+          type: string
+          example: "REST APIs"
+        datetime:
+          type: string
+          format: date-time
+          example: "2021-02-24T12:00:00.000+00:00"
+        duration:
+          type: integer
+          example: 2
+          minimum: 0
+    Convenor:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 3
+          minimum: 0
+        name:
+          type: string
+          example: "Jan Ringert"
+        position:
+          type: string
+          enum:
+            - GTA
+            - LECTURER
+            - PROFESSOR
+          example: "PROFESSOR"
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Module'
+    Module:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "CO2103"
+        title:
+          type: string
+          example: "Software Architecture"
+        level:
+          type: integer
+          format: int32
+          example: 2
+          minimum: 1
+        optional:
+          type: boolean
+          example: false
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+    BadSession:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: -123
+        topic:
+          type: string
+          example: "How to fail HW3"
+        datetime:
+          type: string
+          format: date-time
+          example: "2 o'clock"
+        duration:
+          type: integer
+          format: int32
+          example: -1
+    BadConvenor:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: -321
+        name:
+          type: string
+        position:
+          type: string
+          enum:
+            - GTA
+            - LECTURER
+            - PROFESSOR
+          example: "teaching assistant"
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Module'
+    BadModule:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "Module 1234"
+        title:
+          type: string
+          example: "Palentology"
+        level:
+          type: integer
+          format: int32
+          example: 0
+        optional:
+          type: boolean
+          example: "depends"
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
