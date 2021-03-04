@@ -32,7 +32,7 @@ public class ConvenorRestController {
 		
 		List<Convenor> convenors = conRepo.findAll();
 		if (convenors.isEmpty()) {
-			return new ResponseEntity<List<Convenor>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<Convenor>>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<Convenor>>(convenors, HttpStatus.OK);
 	}
@@ -100,7 +100,7 @@ public class ConvenorRestController {
 	
 	//List convenor modules (endpoint 6)
 	@RequestMapping("/convenors/{id}/modules")
-	public ResponseEntity<?> listModules(@PathVariable(value = "id") long id) {
+	public ResponseEntity<?> listConModules(@PathVariable(value = "id") long id) {
 		
 		if (conRepo.findById(id).isPresent()) {
 			List<Module> modules = conRepo.findById(id).get().getModules();

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import edu.leicester.co2103.ErrorInfo;
@@ -24,6 +26,7 @@ import edu.leicester.co2103.repo.ConvenorRepository;
 import edu.leicester.co2103.repo.ModuleRepository;
 import edu.leicester.co2103.repo.SessionRepository;
 
+@RestController
 public class ModuleRestController {
 
 	@Autowired
@@ -37,7 +40,7 @@ public class ModuleRestController {
 		
 		List<Module> modules = modRepo.findAll();
 		if (modules.isEmpty()) {
-			return new ResponseEntity<List<Module>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<Module>>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<Module>>(modules, HttpStatus.OK);
 	}
@@ -106,7 +109,7 @@ public class ModuleRestController {
 	
 	//List module sessions (endpoint 12)
 	@RequestMapping("/modules/{code}/sessions")
-	public ResponseEntity<?> listSessions(@PathVariable(value = "code") String code) {
+	public ResponseEntity<?> listModSessions(@PathVariable(value = "code") String code) {
 		
 		if (modRepo.findById(code).isPresent()) {
 			List<Session> sessions = modRepo.findById(code).get().getSessions();
@@ -117,7 +120,7 @@ public class ModuleRestController {
 	}
 	
 	//Add session (endpoint 13)
-	@PostMapping("/modules/{code}/sessions/{id}")
+	@PostMapping("/modules/{code}/sessions")
 	public ResponseEntity<?> createSession(@RequestBody Session session, UriComponentsBuilder ucBuilder) {
 
 		if (seshRepo.existsById(session.getId())) {

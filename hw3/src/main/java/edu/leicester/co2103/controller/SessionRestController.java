@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import edu.leicester.co2103.ErrorInfo;
 import edu.leicester.co2103.domain.Module;
@@ -18,6 +20,7 @@ import edu.leicester.co2103.repo.ModuleRepository;
 import edu.leicester.co2103.repo.SessionRepository;
 
 //TODO Streamline code: redundant validation methods
+@RestController
 public class SessionRestController {
 
 	@Autowired
@@ -28,11 +31,18 @@ public class SessionRestController {
 	private SessionRepository seshRepo;
 	
 	//Delete session (endpoint 18)
-	@DeleteMapping("/modules/{code}/sessions")
-	public ResponseEntity<?> deleteSession() {
+	@DeleteMapping("/sessions")
+	public ResponseEntity<?> deleteSessions() {
 
-		seshRepo.deleteAll();
-		return ResponseEntity.ok(null);
+		if (seshRepo.count() == 0) {
+			return new ResponseEntity<ErrorInfo>(new ErrorInfo("No sessions found."),
+					HttpStatus.NOT_FOUND); 
+		} else {
+			seshRepo.deleteAll();
+			return ResponseEntity.ok(null);
+		}
+
+
 		
 	}
 	
