@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: OGM4 CO2103 HW3
-  description: 'A submission for CO2103 Software Architecture, HW2'
+  title: HW3
+  description: 'A submission for CO2103 Software Architecture, HW3'
   contact:
     name: Oliver Monk
     email: ogm4@student.le.ac.uk
