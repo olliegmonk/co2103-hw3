@@ -1,3 +1,1679 @@
 {
-	"info": "Placeholder file, replace this content with your Postman Collection"
+	"info": {
+		"_postman_id": "75dcdee8-fc2b-4b58-820f-b4688d1c4528",
+		"name": "hw3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/convenors (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint1-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/convenors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors"
+					]
+				},
+				"description": "Endpoint 1 - success"
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors (201)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint2-success\", function () {\r",
+							"    pm.response.to.have.status(201)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5,\r\n    \"name\": \"Oliver Monk\",\r\n    \"position\": \"GTA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors"
+					]
+				},
+				"description": "Endpoint 1 - success"
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors (409)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint2-fail\", function () {\r",
+							"    pm.response.to.have.status(409)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":3,\"name\":\"Jan Ringert\",\"position\":\"PROFESSOR\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors"
+					]
+				},
+				"description": "Endpoint 1 - success"
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint3-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/convenors/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint3-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/convenors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint4-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":3,\"name\":\"Jan Ringert\",\"position\":\"LECTURER\", \"modules\": []}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint4-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":5,\"name\":\"Oliver Monk\",\"position\":\"LECTURER\",\"modules\":[]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint5-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint5-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id}/modules (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint6-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/3/modules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"3",
+						"modules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors/{id}/modules (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint6-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/1/modules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"1",
+						"modules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint7-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules (201)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint8-success\", function () {\r",
+							"    pm.response.to.have.status(201)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"code\":\"CO2104\",\"title\":\"Human Computer Interaction\",\"level\":2,\"optional\":false}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules (409)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint8-fail\", function () {\r",
+							"    pm.response.to.have.status(409)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"code\":\"CO2103\",\"title\":\"Software Architecture\",\"level\":2,\"optional\":false}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint9-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint9-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint10-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"code\":\"CO2104\",\"title\":\"Human Computer Interaction\",\"level\":2,\"optional\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2104",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2104"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint10-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"code\":\"CO1234\",\"title\":\"Palentology\",\"level\":2,\"optional\":false}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint10-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2104",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2104"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint10-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint12-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint12-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO1234/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO1234",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions (201)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint13-success\", function () {\r",
+							"    pm.response.to.have.status(201)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"topic\":\"Postman\", \"datetime\":\"2021-03-03T12:00:00.000+00:00\", \"duration\":2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions (409)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint13-fail\", function () {\r",
+							"    pm.response.to.have.status(409)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"topic\":\"REST APIs\",\"datetime\":\"2021-02-24T12:00:00.000+00:00\",\"duration\":2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint14-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint14-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint15-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"topic\":\"REST APIs\",\"datetime\":\"2021-02-24T12:00:00.000+00:00\",\"duration\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint15-success\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"topic\":\"REST APIs\",\"datetime\":\"2021-02-24T12:00:00.000+00:00\",\"duration\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint16-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"topic\":\"REST APIs\",\"datetime\":\"2021-02-24T12:00:00.000+00:00\",\"duration\":2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint16-success\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"topic\":\"REST APIs\",\"datetime\":\"2021-02-24T12:00:00.000+00:00\",\"duration\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint17-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/modules/{code}/sessions/{id} (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint17-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules/CO2103/sessions/35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules",
+						"CO2103",
+						"sessions",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/sessions (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint19-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sessions?module=CO2103&convenor=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions"
+					],
+					"query": [
+						{
+							"key": "module",
+							"value": "CO2103"
+						},
+						{
+							"key": "convenor",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/sessions (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint19-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sessions?module=CO1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions"
+					],
+					"query": [
+						{
+							"key": "module",
+							"value": "CO1234"
+						},
+						{
+							"key": "convenor",
+							"value": "3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/sessions (200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"endpoint18-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/sessions (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Must be carried out after all sessions have been deleted\r",
+							"pm.test(\"endpoint18-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[SETUP] {\"convenorId\": \"3\"}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"setup1-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[SETUP] {\"convenorId\": \"4\"}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"setup2-success\", function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/convenors/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/convenors (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Must be carried out with empty convenor repo\r",
+							"pm.test(\"endpoint1-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/convenors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"convenors"
+					]
+				},
+				"description": "Endpoint 1 - success"
+			},
+			"response": []
+		},
+		{
+			"name": "/modules (404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Must be carried out with empty module repo\r",
+							"pm.test(\"endpoint7-fail\", function () {\r",
+							"    pm.response.to.have.status(404)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/modules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modules"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }

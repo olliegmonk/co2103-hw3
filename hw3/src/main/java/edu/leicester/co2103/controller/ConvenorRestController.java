@@ -50,7 +50,7 @@ public class ConvenorRestController {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/convenors/{id}").buildAndExpand(convenor.getId()).toUri());
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Convenor>(convenor, HttpStatus.CREATED);
 	}
 	
 	//Get convenor (endpoint 3)

@@ -46,7 +46,7 @@ public class SessionRestController {
 		
 	}
 	
-	//Search sessions
+	//Search sessions (endpoint 19)
 	@RequestMapping("/sessions")
 	public ResponseEntity<?> searchSession(@RequestParam(name = "convenor", required = false) Long id, @RequestParam(name = "module", required = false) String code) {
 		

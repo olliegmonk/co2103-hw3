@@ -21,6 +21,16 @@ public class Session {
 	/*@OneToOne(cascade = CascadeType.REFRESH)
 	private Module module;*/
 
+	public Session() {}
+	
+	public Session(long id, String topic, Timestamp datetime, int duration) {
+		super();
+		this.id = id;
+		this.topic = topic;
+		this.datetime = datetime;
+		this.duration = duration;
+	}
+
 	public long getId() {
 		return id;
 	}

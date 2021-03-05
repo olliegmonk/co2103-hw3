@@ -1,5 +1,6 @@
 package edu.leicester.co2103.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class ModuleRestController {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/modules/{code}").buildAndExpand(module.getCode()).toUri());
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Module>(module, HttpStatus.CREATED);
 	}
 	
 	//Get module (endpoint 9)
@@ -121,7 +122,7 @@ public class ModuleRestController {
 	
 	//Add session (endpoint 13)
 	@PostMapping("/modules/{code}/sessions")
-	public ResponseEntity<?> createSession(@RequestBody Session session, UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<?> createSession(@RequestBody Session session, @PathVariable(value = "code") String code, UriComponentsBuilder ucBuilder) {
 
 		if (seshRepo.existsById(session.getId())) {
 			return new ResponseEntity<ErrorInfo>(new ErrorInfo("A session with ID " + session.getId() + " already exists."),
@@ -129,10 +130,15 @@ public class ModuleRestController {
 		}
 
 		seshRepo.save(session);
+		String message = "Session with ID " + String.valueOf(session.getId()) + " created";
+		/*List<String> pathParameters = new ArrayList<>();
+		pathParameters.add(code);
+		pathParameters.add(String.valueOf(session.getId()));
 
 		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/modules/{code}/sessions/{id}").buildAndExpand(session.getId()).toUri());
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		headers.setLocation(ucBuilder.path("/modules/{code}/sessions/{id}").buildAndExpand(pathParameters).toUri()); 
+		return new ResponseEntity<String>(headers, HttpStatus.CREATED);*/
+		return new ResponseEntity<Session>(session, HttpStatus.CREATED);
 	}
 	
 	//Get session (endpoint 14)
@@ -142,9 +148,10 @@ public class ModuleRestController {
 		if (seshRepo.findById(id).isPresent()) {
 			Session session = seshRepo.findById(id).get();
 			return new ResponseEntity<Session>(session, HttpStatus.OK);
-		} else
+		} else {
 			return new ResponseEntity<ErrorInfo>(new ErrorInfo("Session with ID " + id + " not found"),
 					HttpStatus.NOT_FOUND);
+		}
 	}	
 	
 	//Update session (endpoint 15)
@@ -171,10 +178,13 @@ public class ModuleRestController {
 
 		if (seshRepo.findById(id).isPresent()) {
 			Session currentSession = seshRepo.findById(id).get();
-			currentSession.setTopic(newSession.getTopic());
-			currentSession.setDatetime(newSession.getDatetime());
-			currentSession.setDuration(newSession.getDuration());
-
+			if (newSession.getTopic() != "") {
+				currentSession.setTopic(newSession.getTopic());
+			} if (newSession.getDatetime() != null) {
+				currentSession.setDatetime(newSession.getDatetime());				
+			} if (newSession.getDuration() != 0) {
+				currentSession.setDuration(newSession.getDuration());
+			}
 			seshRepo.save(currentSession);
 			return new ResponseEntity<Session>(currentSession, HttpStatus.OK);
 		} else

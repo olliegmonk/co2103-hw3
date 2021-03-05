@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: HW3
-  description: 'A submission for CO2103 Software Architecture, HW3'
+  description: 'A submission for CO2103 Software Architecture, HW2'
   contact:
     name: Oliver Monk
     email: ogm4@student.le.ac.uk
@@ -41,7 +41,7 @@ paths:
               $ref: '#/components/schemas/Convenor'
         required: true
       responses:
-        200:
+        201:
           description: OK response
           content:
             application/json:
@@ -188,7 +188,7 @@ paths:
       summary: Add a new module
       operationId: createModule
       responses:
-        200:
+        201:
           description: OK response
           content:
             application/json:
@@ -325,7 +325,7 @@ paths:
       summary: Add a new session to a module
       operationId: createSession
       responses:
-        200:
+        201:
           description: OK response
           content:
             application/json:
